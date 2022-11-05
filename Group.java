@@ -122,14 +122,12 @@ public class Group {
     public String checkSimilarStudents() {
         HashSet<Integer> numbers = new HashSet<>();
         StringBuilder sb = new StringBuilder("There are the same students at the following indexes: ");
-        Student st = new Student();
         for (int i = 0; i < students.length; i++) {
-            for (int j = i; j < students.length; j++) {
-                if (students[j] != null) {
-                    if (students[j].equals(students[j + 1]) || st.equals(students[j + 1])) {
+            for (int j = i + 1; j < students.length; j++) {
+                if (students[j] != null && students[i] != null) {
+                    if (students[i].equals(students[j])) {
+                        numbers.add(i);
                         numbers.add(j);
-                        numbers.add(j + 1);
-                        st = students[j];
                     }
                 }
             }
